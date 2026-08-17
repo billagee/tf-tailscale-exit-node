@@ -1,0 +1,24 @@
+# Copy to terraform.tfvars and fill in your own values. Do not commit
+# terraform.tfvars -- it's already gitignored.
+
+tenancy_ocid      = "ocid1.tenancy.oc1..xxxxxxxx"
+user_ocid         = "ocid1.user.oc1..xxxxxxxx"
+fingerprint       = "xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx"
+private_key_path  = "~/.oci/oci_api_key.pem"
+compartment_id    = "ocid1.tenancy.oc1..xxxxxxxx" # root compartment OCID == tenancy OCID unless you created a sub-compartment
+
+region = "uk-london-1"
+
+ssh_public_key_path = "~/.ssh/id_ed25519.pub"
+ssh_allowed_cidr    = "0.0.0.0/0" # narrow this to your own IP/32 if you can
+
+# Optional: generate at https://login.tailscale.com/admin/settings/keys
+# Leave blank to run `sudo tailscale up` manually after the instance boots.
+tailscale_auth_key = ""
+
+# Always Free ARM shape. Switch to instance_shape = "VM.Standard.E2.1.Micro"
+# (and drop instance_ocpus/instance_memory_in_gbs) if A1 capacity isn't
+# available in uk-london-1 -- see README for details.
+instance_shape         = "VM.Standard.A1.Flex"
+instance_ocpus          = 1
+instance_memory_in_gbs = 6
